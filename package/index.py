@@ -22,4 +22,4 @@ def handler(event, context):
     upload_path = '/tmp/resized-{}'.format(tmpkey)
     s3_client.download_file(bucket, key, download_path)
     resize_image(download_path, upload_path)
-    s3_client.upload_file(upload_path, '{}-resized'.format(bucket), 'resized-{}'.format(key))
+    s3_client.upload_file(upload_path, 'sqs-lab-output-bucket', 'resized-{}'.format(key))
